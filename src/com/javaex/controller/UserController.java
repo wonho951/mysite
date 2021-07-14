@@ -64,7 +64,7 @@ public class UserController extends HttpServlet {
 			System.out.println("[UserController.loginForm]");
 			
 			//로그인폼 포워드
-			//WebUtil.forword(request, response, "")
+			WebUtil.forword(request, response, "/WEB-INF/views/user/loginForm.jsp");
 			
 		}
 		

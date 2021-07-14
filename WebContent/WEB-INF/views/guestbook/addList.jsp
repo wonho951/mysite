@@ -74,7 +74,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="/mysite/guestbook" method="get">
+					<form action="/mysite/guest" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
@@ -92,7 +92,7 @@
 									<th><label class="form-text" for="input-pass">패스워드</label>
 									</th>
 									<td>
-										<input id="input-pass" type="password" name="pass">
+										<input id="input-pass" type="password" name="password">
 									</td>
 								</tr>
 								<tr>
@@ -126,7 +126,7 @@
 							<td><%= guestbookList.get(i).getName() %></td>
 							<td><%= guestbookList.get(i).getRegDate() %></td>
 							<td>
-								<a href="/mysite/guestbook?action=dform&no=<%= guestbookList.get(i).getNo()%>">삭제</a>>
+								<a href="/mysite/guest?action=dform&no=<%= guestbookList.get(i).getNo()%>">삭제</a>>
 							</td>
 						</tr>
 						<tr>

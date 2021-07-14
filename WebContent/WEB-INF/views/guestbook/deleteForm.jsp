@@ -84,17 +84,17 @@
 							<tr>
 								<td>비밀번호</td>
 								<td>
-									<input type="password" name="pass">
+									<input type="password" name="password">
 								</td>
 								<td class="text-left">
 									<button type="submit">삭제</button>
 								</td>
 								<td>
-									<a href="/guestbook2/gbc">[메인으로 돌아가기]</a>
+									<a href="/mysite/main">[메인으로 돌아가기]</a>
 								</td>
 							</tr>
 						</table>
-						<input type='hidden' name="no" value="<%=no %>">
+						<input type='hidden' name="no" value=<%=no %>>
 						<input type='hidden' name="action" value="delete">
 					</form>
 

@@ -40,8 +40,7 @@ public class GuestbookController extends HttpServlet {
 			request.setAttribute("gList", guestbookList);
 			
 			WebUtil.forword(request, response, "/WEB-INF/views/guestbook/addList.jsp");
-			///views/guestbook
-			
+						
 			
 		} else if ("add".equals(action)) {
 			System.out.println("등록");
@@ -69,16 +68,13 @@ public class GuestbookController extends HttpServlet {
 			System.out.println("삭제");
 			
 			int no = Integer.parseInt(request.getParameter("no"));
-			String password = request.getParameter("pass");
+			String password = request.getParameter("password");
 			
 			GuestbookVo guestbookVo = new GuestbookVo(no, password);
 			
 			guestDao.guestDelete(guestbookVo);
 			
-		
-			//response.sendRedirect("/guestbook2/gbc?action=list");
-			
-			WebUtil.redirect(request, response, "/mysite/guest?action=list");
+			WebUtil.redirect(request, response, "/mysite/guest?action=addList");
 			
 		}
 		

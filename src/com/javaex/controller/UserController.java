@@ -41,10 +41,13 @@ public class UserController extends HttpServlet {
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String gender = request.getParameter("gender");
-			System.out.println(id + ", " + pw + ", " + name  + ", " + gender);	//값이 잘 들어가는지 확인용
+			//System.out.println(id + ", " + pw + ", " + name  + ", " + gender);	//값이 잘 들어가는지 확인용
 			
 			//vo만들기--> 한덩어리로 만든다
 			UserVo userVo = new UserVo(id, pw, name, gender);
+			System.out.println(userVo);
+			
+			
 			
 			//dao.insert(vo); -->db에 저장
 			

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javaex.dao.UserDao;
 import com.javaex.util.WebUtil;
 import com.javaex.vo.UserVo;
 
@@ -50,7 +51,8 @@ public class UserController extends HttpServlet {
 			
 			
 			//dao.insert(vo); -->db에 저장
-			
+			UserDao userDao = new UserDao();
+			int count = userDao.userInsert(userVo);
 			//포워드
 			WebUtil.forword(request, response, "/WEB-INF/views/user/join.jsp");
 		}

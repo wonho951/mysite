@@ -59,6 +59,13 @@ public class UserController extends HttpServlet {
 			int count = userDao.userInsert(userVo);
 			//포워드
 			WebUtil.forword(request, response, "/WEB-INF/views/user/joinOk.jsp");
+			
+		}else if ("loginForm".equals(action)) {			
+			System.out.println("[UserController.loginForm]");
+			
+			//로그인폼 포워드
+			//WebUtil.forword(request, response, "")
+			
 		}
 		
 		

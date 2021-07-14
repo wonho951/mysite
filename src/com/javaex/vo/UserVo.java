@@ -45,7 +45,7 @@ public class UserVo {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
+	
 	
 	//메소드 - 일반
 	@Override

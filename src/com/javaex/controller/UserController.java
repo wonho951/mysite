@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.util.WebUtil;
+import com.javaex.vo.UserVo;
 
 @WebServlet("/user")
 public class UserController extends HttpServlet {
@@ -43,7 +44,7 @@ public class UserController extends HttpServlet {
 			System.out.println(id + ", " + pw + ", " + name  + ", " + gender);	//값이 잘 들어가는지 확인용
 			
 			//vo만들기--> 한덩어리로 만든다
-			
+			UserVo userVo = new UserVo(id, pw, name, gender);
 			
 			//dao.insert(vo); -->db에 저장
 			

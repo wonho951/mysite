@@ -73,7 +73,7 @@
 	
 				<div id="user">
 					<div id="joinForm">
-						<form action="./user" method="get">	<!-- ./user/join 으로 하면 주소체계 다르게 출력되넹 -->
+						<form action="./user" method="post">	<!-- ./user/join 으로 하면 주소체계 다르게 출력되넹 -->
 	
 							<!-- 아이디 -->
 							<div class="form-group">

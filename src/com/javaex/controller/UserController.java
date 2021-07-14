@@ -18,24 +18,28 @@ public class UserController extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		System.out.println("[UserController]");
 		
+		//텍스트 인코딩 --> 한글깨짐 방지
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		//파라미터 가져오기(업무에 해당하는 action)
 		String action = request.getParameter("action");
 		System.out.println(action);	//확인용
 		
 		
-		if("joinForm".equals(action)) {
+		
+		if("joinForm".equals(action)) {	//회원가입 폼
 
 			System.out.println("[UserController.joinForm]");
 			
 			//회원가입 폼 포워드
 			WebUtil.forword(request, response, "/WEB-INF/views/user/joinForm.jsp");
 			
-		} else if ("join".equals(action)){
+		} else if ("join".equals(action)){	//회원가입
 			System.out.println("[UserController.join]");
-			
-			
-			//회원가입 	
 			
 			//파라미터 꺼내기
 			String id = request.getParameter("id");
@@ -54,7 +58,7 @@ public class UserController extends HttpServlet {
 			UserDao userDao = new UserDao();
 			int count = userDao.userInsert(userVo);
 			//포워드
-			WebUtil.forword(request, response, "/WEB-INF/views/user/join.jsp");
+			WebUtil.forword(request, response, "/WEB-INF/views/user/joinOk.jsp");
 		}
 		
 		

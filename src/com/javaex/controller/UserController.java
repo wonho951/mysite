@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,25 @@ public class UserController extends HttpServlet {
 			WebUtil.forword(request, response, "/WEB-INF/views/user/joinForm.jsp");
 			
 		} else if ("join".equals(action)){
-			//회원가입 --> 을 저장해야함.			
+			System.out.println("[UserController.join]");
+			
+			
+			//회원가입 	
+			
+			//파라미터 꺼내기
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			System.out.println(id + ", " + pw + ", " + name  + ", " + gender);	//값이 잘 들어가는지 확인용
+			
+			//vo만들기--> 한덩어리로 만든다
+			
+			
+			//dao.insert(vo); -->db에 저장
+			
+			//포워드
+			WebUtil.forword(request, response, "/WEB-INF/views/user/join.jsp");
 		}
 		
 		

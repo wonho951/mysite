@@ -88,7 +88,7 @@
 		
 		
 		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
+			Copyright ⓒ 2020 최원호. All right reserved
 		</div>
 		<!-- //footer -->
 

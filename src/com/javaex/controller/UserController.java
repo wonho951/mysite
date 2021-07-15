@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.javaex.dao.UserDao;
 import com.javaex.util.WebUtil;
@@ -69,11 +70,22 @@ public class UserController extends HttpServlet {
 		} else if("login".equals(action)) {
 			System.out.println("[UserController.login]");
 			
+			//파라미터에 값 꺼내기
 			String id = request.getParameter("id");
 			String password = request.getParameter("pw");
+
 			
-			System.out.println(id + ", " + password);
+			//dao 회원정보 조회하기(세션 저장용)
+			UserDao userDao = new UserDao();
+			UserVo userVo = userDao.getUser(id, password);
 			
+			
+			//성공일때(아이디 비번 일치했을때) 세션에 저장	--> 실패일때도 작성해야함.
+			HttpSession session = request.getSession();	//내놔 라고 요청함
+			session.setAttribute("authUser", userVo);	//authUser 는 별명.
+			
+			//리다이렉트
+			WebUtil.redirect(request, response, "/mysite/main");
 		}
 		
 		

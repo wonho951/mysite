@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
+<%@ page import="com.javaex.vo.UserVo" %>
+<% UserVo authuser = (UserVo)session.getAttribute("authUser");
+	System.out.println(authuser);%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +54,7 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<span class="text-large bold">userid</span>
+								<span class="text-large bold"><%= authuser.getId() %></span>
 							</div>
 	
 							<!-- 비밀번호 -->

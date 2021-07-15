@@ -99,12 +99,8 @@ public class UserController extends HttpServlet {
 				//실패일때 (아이디 비번 불일치) 
 				
 				
-			}
-			
-			
-			
-			
-
+			}		
+	
 			
 		} else if("logout".equals(action)) {
 			System.out.println("[UserController.logout]");
@@ -120,18 +116,22 @@ public class UserController extends HttpServlet {
 		} 
 		
 		
-		
-		
-		/*
 		else if("modifyForm".equals(action)) {
 			System.out.println("[UserController.modifyForm]");
 			
+			//로그인한 사용자의 회원정보를 보여줘야한다. --> 세션에서 가져온다
+			HttpSession session = request.getSession();
+			UserVo authUser = (UserVo)session.getAttribute("authUser");
+			int authUserNo = authUser.getNo();
 			
-		}*/
-		
-		
-		
-
+			//로그인한 사용자 회원정보 가져오기
+			UserDao userDao = new UserDao();
+			UserVo userVo = userDao.getUser(authUserNo);
+			
+			//리퀘스트 세션 요역에 로그인한 사용자 회원정보 넣기
+			
+			//포워드 하기
+		}
 		
 		
 	}

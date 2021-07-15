@@ -2,6 +2,7 @@ package com.javaex.vo;
 
 public class UserVo {
 	//필드
+	private int no;
 	private String id;
 	private String pw;
 	private	String name;
@@ -11,15 +12,15 @@ public class UserVo {
 	//생성자
 	public UserVo() {
 	}
-	public UserVo(String id, String pw, String name, String gender) {
-		super();
+	
+	public UserVo(int no, String id, String pw, String name, String gender) {
+		this.no = no;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.gender = gender;
 	}
-	
-	
+
 	//메소드 g/s
 	public String getId() {
 		return id;

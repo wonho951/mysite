@@ -53,7 +53,7 @@
 <%-- 			<% } %> --%>
 
 <!-- 		</div> -->
-<!-- 		<!-- //header --> -->
+<!-- 		<!-- //header -->
 
 <!-- 		<div id="nav"> -->
 <!-- 			<ul class="clearfix"> -->
@@ -63,7 +63,7 @@
 <!-- 				<li><a href="/mysite/guest?action=addList">방명록</a></li> -->
 <!-- 			</ul> -->
 <!-- 		</div> -->
-<!-- 		<!-- //nav --> -->
+<!-- 		<!-- //nav -->
 
 		<div id="container" class="clearfix">
 			<div id="aside">

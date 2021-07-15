@@ -5,6 +5,6 @@
     
     
 		<div id="footer">
-			Copyright ⓒ 2020 최원호. All right reserved
+			Copyright ⓒ 2021 최원호. All right reserved
 		</div>
 		<!-- //footer -->

@@ -39,6 +39,7 @@ public class GuestbookController extends HttpServlet {
 			
 			request.setAttribute("gList", guestbookList);
 			
+			//포워드
 			WebUtil.forword(request, response, "/WEB-INF/views/guestbook/addList.jsp");
 						
 			

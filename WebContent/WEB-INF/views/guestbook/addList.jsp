@@ -2,8 +2,18 @@
 
 <%@ page import="com.javaex.vo.GuestbookVo" %>
 <%@ page import="java.util.List" %> 
+<%@ page import="com.javaex.vo.UserVo" %>
 
-<% 	List<GuestbookVo> guestbookList = (List<GuestbookVo>)request.getAttribute("gList");%>
+
+<% 	
+	//로그인관련
+	UserVo authuser= (UserVo)session.getAttribute("authUser");
+	
+	
+	//리스트 출력관련
+	List<GuestbookVo> guestbookList = (List<GuestbookVo>)request.getAttribute("gList");
+	
+%>
 
 <!DOCTYPE html>
 <html>
@@ -24,17 +34,18 @@
 				<a href="/mysite/main?action=index">MySite</a>
 			</h1>
 
-			<!-- 
+			<% if (authuser != null)  {%> 
 			<ul>
-				<li>황일영 님 안녕하세요^^</li>
+				<li><%=authuser.getName() %> 님 안녕하세요^^</li>
 				<li><a href="" class="btn_s">로그아웃</a></li>
 				<li><a href="" class="btn_s">회원정보수정</a></li>
 			</ul>
-			-->
+			<%} else { %>
 			<ul>
 				<li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
 				<li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
 			</ul>
+			<% } %>
 
 		</div>
 		<!-- //header -->

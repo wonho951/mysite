@@ -13,6 +13,9 @@ public class UserVo {
 	public UserVo() {
 	}
 	
+	
+	
+	
 	public UserVo(int no, String id, String pw, String name, String gender) {
 		this.no = no;
 		this.id = id;
@@ -48,10 +51,22 @@ public class UserVo {
 	}
 	
 	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+
+
 	//메소드 - 일반
+	
 	@Override
 	public String toString() {
-		return "UserVo [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + "]";
+		return "UserVo [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + "]";
 	}
+	
 	
 }

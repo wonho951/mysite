@@ -18,7 +18,8 @@ public class DaoTest {
 		
 		//2021.07.15 세션 test
 		UserDao userDao = new UserDao();
-		userDao.getUser("", "");
+		UserVo userVo = userDao.getUser("wonho", "123");
+		System.out.println(userVo);
 		
 	}
 

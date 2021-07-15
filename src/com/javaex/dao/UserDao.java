@@ -87,7 +87,7 @@ public class UserDao {
 	
 	//2021.07.15
 	//유저 1명정보 가져오기
-	public void getUser(String id, String pass) {
+	public UserVo getUser(String id, String pass) {
 		
 		UserVo userVo = null;
 		
@@ -116,6 +116,10 @@ public class UserDao {
 			
 			System.out.println(query);//쿼리 확인용
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			
+			
 			rs = pstmt.executeQuery();
 			
 		    // 4.결과처리
@@ -150,8 +154,7 @@ public class UserDao {
 		    }
 
 		}
-
-		
+		return userVo;
 		
 		
 	}

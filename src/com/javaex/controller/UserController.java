@@ -143,8 +143,7 @@ public class UserController extends HttpServlet {
 			//로그인한 사용자의 회원정보를 보여줘야한다. --> 세션에서 가져온다
 			HttpSession session = request.getSession();
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
-			int authUserNo = authUser.getNo();
-			String authUserPw = authUser.getPw();
+
 			
 			
 		}

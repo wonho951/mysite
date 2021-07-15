@@ -2,8 +2,11 @@
 
 
 <%@ page import="com.javaex.vo.UserVo" %>
-<% UserVo authuser = (UserVo)session.getAttribute("authUser");
-	System.out.println(authuser);%>
+
+<% 
+	UserVo authUser = (UserVo)request.getAttribute("authUser");
+	System.out.println("정보수정 : " + authUser);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -49,12 +52,12 @@
 	
 				<div id="user">
 					<div id="modifyForm">
-						<form action="" method="get">
+						<form action="/mysite/main" method="get">
 	
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<span class="text-large bold"><%= authuser.getId() %></span>
+								<span class="text-large bold"><%= authUser.getId() %></span>
 							</div>
 	
 							<!-- 비밀번호 -->
@@ -63,13 +66,13 @@
 								<input type="text" id="input-pass" name="" value="" placeholder="비밀번호를 입력하세요"	>
 							</div>
 	
-							<!-- 이메일 -->
+							<!-- 이름 -->
 							<div class="form-group">
 								<label class="form-text" for="input-name">이름</label> 
 								<input type="text" id="input-name" name="" value="" placeholder="이름을 입력하세요">
 							</div>
 	
-							<!-- //나이 -->
+							<!-- //성별 -->
 							<div class="form-group">
 								<span class="form-text">성별</span> 
 								

@@ -106,7 +106,7 @@
 		
 		
 		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 
 	</div>
 	<!-- //wrap -->

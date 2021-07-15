@@ -148,7 +148,7 @@ public class UserDao {
 	
 	
 	//회원정보 수정할때 회원정보 불러옴
-	public UserVo getUser(int no) {
+	public UserVo getUserInfo(int no) {
 		
 		UserVo userVo = null;
 		
@@ -165,10 +165,9 @@ public class UserDao {
 			query += " from users ";
 			query += " where no = ? ";
 			
-			System.out.println(query);//쿼리 확인용
+			//System.out.println(query);//쿼리 확인용
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
-			
 			
 			rs = pstmt.executeQuery();
 			
@@ -181,14 +180,45 @@ public class UserDao {
 				String gender = rs.getString("gender");
 				
 				//생성자가 없는 경우 setter 이용--> 좋은방법 아님. 차라리 Vo에서 생성자 만들어 두는게 편함
-				userVo = new UserVo();
-				userVo.setNo(no);
-				userVo.setId(id);
-				userVo.setPw(password);
-				userVo.setName(name);
-				userVo.setGender(gender);
+				userVo = new UserVo(no, id, password, name, gender);
 				
 			}
+			
+		}  catch (SQLException e) {
+		    System.out.println("error:" + e);
+		} 
+		this.close();
+		
+		return userVo;
+	}
+	
+	
+	//회원정보 수정
+	public UserVo getUserupdate(UserVo userVo) {
+		
+		
+		this.getConnection();
+		
+		try {
+		    // 3. SQL문 준비 / 바인딩 / 실행
+			String query = "";
+			query += " update users ";
+			query += " set password = ?, ";
+			query += " 	   name = ?, ";
+			query += "     gender = ? ";
+			query += " where no = ? ";
+			
+			//System.out.println(query);//쿼리 확인용
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userVo.getPw());
+			pstmt.setString(2, userVo.getName());
+			pstmt.setString(3, userVo.getGender());
+			pstmt.setInt(4, userVo.getNo());
+			
+			int count = pstmt.executeUpdate();
+			
+		    // 4.결과처리
+			
 		}  catch (SQLException e) {
 		    System.out.println("error:" + e);
 		} 

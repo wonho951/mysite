@@ -34,3 +34,36 @@ from users;
 
 
 commit;
+
+
+
+--2021.07.15 세션 sql문
+select  *
+from users;
+
+
+
+select  no,
+        name
+from users
+where id = 'king'
+and password = '123';
+
+
+--회원정보 수정시 회원정보 가져옴
+select  no,
+        id,
+        password,
+        name,
+        gender
+from users
+where no = '5'
+and id = 'choi';
+
+
+--회원정보 수정
+update users
+set password = '12',
+    name = '염따',
+    gender = 'female'
+where no = 5;

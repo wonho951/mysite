@@ -89,6 +89,9 @@ public class UserDao {
 	//유저 1명정보 가져오기
 	public void getUser(String id, String pass) {
 		
+		UserVo userVo = null;
+		
+		
 		// 0. import java.sql.*;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -121,7 +124,7 @@ public class UserDao {
 				String name = rs.getString("name");
 				
 				//생성자가 없는 경우 setter 이용--> 좋은방법 아님. 차라리 Vo에서 생성자 만들어 두는게 편함
-				UserVo userVo = new UserVo();
+				userVo = new UserVo();
 				userVo.setNo(no);
 				userVo.setName(name);
 			}

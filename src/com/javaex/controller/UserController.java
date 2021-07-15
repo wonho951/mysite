@@ -90,6 +90,13 @@ public class UserController extends HttpServlet {
 		} else if("logout".equals(action)) {
 			System.out.println("[UserController.logout]");
 			
+			//세션에 있는 "authUser"의 정보 삭제
+			HttpSession session = request.getSession();
+			session.removeAttribute("authUser");	//지정된 이름에 해당하는 객체를 세션에서 제거한다
+			session.invalidate();	//메모리 지우는거
+			
+			//리다이렉트 --> 로그아웃시 메모리 지우고 다시 메인페이로 보냄
+			WebUtil.redirect(request, response, "/mysite/main");
 		}
 		
 		

@@ -13,9 +13,15 @@ public class UserVo {
 	public UserVo() {
 	}
 	
-	
-	
-	
+
+	public UserVo(String pw, String name, String gender) {
+		super();
+		this.pw = pw;
+		this.name = name;
+		this.gender = gender;
+	}
+
+
 	public UserVo(String id, String pw, String name, String gender) {
 		super();
 		this.id = id;
@@ -25,6 +31,15 @@ public class UserVo {
 	}
 
 
+
+
+	public UserVo(int no, String pw, String name, String gender) {
+		super();
+		this.no = no;
+		this.pw = pw;
+		this.name = name;
+		this.gender = gender;
+	}
 
 
 	public UserVo(int no, String id, String pw, String name, String gender) {

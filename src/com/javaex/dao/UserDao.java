@@ -194,8 +194,9 @@ public class UserDao {
 	
 	
 	//회원정보 수정
-	public UserVo getUserupdate(UserVo userVo) {
+	public int getUserupdate(UserVo userVo) {
 		
+		int count = 0;
 		
 		this.getConnection();
 		
@@ -215,7 +216,7 @@ public class UserDao {
 			pstmt.setString(3, userVo.getGender());
 			pstmt.setInt(4, userVo.getNo());
 			
-			int count = pstmt.executeUpdate();
+			count = pstmt.executeUpdate();
 			
 		    // 4.결과처리
 			
@@ -224,7 +225,7 @@ public class UserDao {
 		} 
 		this.close();
 		
-		return userVo;
+		return count;
 	}
 	
 	

@@ -119,14 +119,16 @@ public class UserController extends HttpServlet {
 		else if("modifyForm".equals(action)) {
 			System.out.println("[UserController.modifyForm]");
 			
+			
 			//로그인한 사용자의 회원정보를 보여줘야한다. --> 세션에서 가져온다
 			HttpSession session = request.getSession();
+			
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
-			int authUserNo = authUser.getNo();
+			int no = authUser.getNo();
 			
 			//로그인한 사용자 회원정보 가져오기
 			UserDao userDao = new UserDao();
-			UserVo userVo = userDao.getUserInfo(authUserNo);
+			UserVo userVo = userDao.getUserInfo(no);
 			
 			
 			
@@ -140,13 +142,39 @@ public class UserController extends HttpServlet {
 		} else if ("modify".equals(action))	{
 			System.out.println("[UserController.modify]");
 			
-			//로그인한 사용자의 회원정보를 보여줘야한다. --> 세션에서 가져온다
+			UserDao userDao = new UserDao();
+			
+			
+			//세션에서 no 가져옴
 			HttpSession session = request.getSession();
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
+			
+			
+			//파라미터값 불러온다
+			int no = Integer.parseInt(request.getParameter("no"));
+			String password = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			
+			System.out.println(password + name + gender);	//확인용
+			
+			
+			//vo에 파라미터 값 저장.
+			UserVo userVo = new UserVo(no, password, name, gender);
+			//System.out.println(userVo);	//확인용
 
+			//update ㄱㄱ
+			userDao.getUserupdate(userVo);
 			
 			
-		}
+			authUser.setName(name);
+			
+			session.setAttribute("authUser", userVo);
+			
+			
+			//메인으로 리다이렉트
+			WebUtil.redirect(request, response, "/mysite/main");
+		} 
 		
 	}
 

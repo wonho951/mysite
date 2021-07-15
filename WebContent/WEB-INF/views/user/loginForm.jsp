@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<% String result = request.getParameter("result"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,6 +59,13 @@
 								<label class="form-text" for="input-pass">비밀번호</label>
 								<input type="password" id="input-pass" name="pw" value="" placeholder="비밀번호를 입력하세요">
 							</div>
+
+
+							<%if("fail".equals(result)){ %>
+							<p>
+								로그인에 실패했습니다. 다시 로그인해 주세요
+							</p>
+							<% } %>
 
 
 							<!-- 버튼영역 -->

@@ -80,12 +80,31 @@ public class UserController extends HttpServlet {
 			UserVo userVo = userDao.getUser(id, password);
 			
 			
-			//성공일때(아이디 비번 일치했을때) 세션에 저장	--> 실패일때도 작성해야함.
-			HttpSession session = request.getSession();	//내놔 라고 요청함
-			session.setAttribute("authUser", userVo);	//authUser 는 별명. jsp에 데이터 전달할때 비교 --> request.setAttribute();
+			if(userVo != null) {
+				System.out.println("로그인 성공");
+				//성공일때(아이디 비번 일치했을때) 세션에 저장	
+				HttpSession session = request.getSession();	//내놔 라고 요청함
+				session.setAttribute("authUser", userVo);	//authUser 는 별명. jsp에 데이터 전달할때 비교 --> request.setAttribute();
+				
+				//리다이렉트
+				WebUtil.redirect(request, response, "/mysite/main");
+				
+			} else {	//로그인 실패시
+				System.out.println("로그인 실패");
+				
+				
+				//리다이렉트 --> 로그인폼 페이지
+				WebUtil.redirect(request, response, "/mysite/user?action=loginForm&result=fail");
+				
+				//실패일때 (아이디 비번 불일치) 
+				
+				
+			}
 			
-			//리다이렉트
-			WebUtil.redirect(request, response, "/mysite/main");
+			
+			
+			
+
 			
 		} else if("logout".equals(action)) {
 			System.out.println("[UserController.logout]");
@@ -97,7 +116,18 @@ public class UserController extends HttpServlet {
 			
 			//리다이렉트 --> 로그아웃시 메모리 지우고 다시 메인페이로 보냄
 			WebUtil.redirect(request, response, "/mysite/main");
-		}
+			
+		} 
+		
+		
+		
+		
+		/*
+		else if("modifyForm".equals(action)) {
+			System.out.println("[UserController.modifyForm]");
+			
+			
+		}*/
 		
 		
 		

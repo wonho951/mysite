@@ -8,7 +8,7 @@ DROP SEQUENCE seq_user_no;
 --users 테이블 생성
 create table users (
     no number,
-    id VARCHAR2(20) unique not null,    --����ũ �̸鼭 not null��
+    id VARCHAR2(20) unique not null,    
     password VARCHAR2(20) not null,
     name varchar2(20),
     gender varchar2(10),
@@ -24,7 +24,7 @@ nocache;
 
 
 --insert
-insert into users   --DB���� user�� ������̱� ������ ���̺��� users �� ��
+insert into users   
 values (seq_user_no.nextval, 'wonho', '123', '�ֿ�ȣ', 'male'); 
 
 

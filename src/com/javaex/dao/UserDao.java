@@ -114,8 +114,15 @@ public class UserDao {
 			System.out.println(query);//쿼리 확인용
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
+			
 		    // 4.결과처리
-
+			while(rs.next()) {
+				int no = rs.getInt("no");
+				String name = rs.getString("name");
+				
+				UserVo userVo = new UserVo();
+				userVo.set
+			}
 		} catch (ClassNotFoundException e) {
 		    System.out.println("error: 드라이버 로딩 실패 - " + e);
 		} catch (SQLException e) {

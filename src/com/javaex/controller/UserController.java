@@ -124,15 +124,13 @@ public class UserController extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
-			int no = authUser.getNo();
+			int no = authUser.getNo();	//no만 가져오는 이유는 메모리를 최소한으로 사용하기 위해서
 			
 			//로그인한 사용자 회원정보 가져오기
 			UserDao userDao = new UserDao();
 			UserVo userVo = userDao.getUserInfo(no);
 			
-			
-			
-			//리퀘스트 세션 요역에 로그인한 사용자 회원정보 넣기
+		
 			request.setAttribute("authUser", userVo);
 			System.out.println("컨트롤 : "+userVo);
 			

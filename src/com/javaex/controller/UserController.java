@@ -137,6 +137,14 @@ public class UserController extends HttpServlet {
 			//포워드 하기
 			WebUtil.forword(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 			
+			
+			
+			/*
+			대근이는 바로 포워드만 함.	--> modifyForm에 세션에서 값 가져오고 있음.
+			WebUtil.forword(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+			
+			*/
+			
 		} else if ("modify".equals(action))	{
 			System.out.println("[UserController.modify]");
 			
@@ -147,7 +155,7 @@ public class UserController extends HttpServlet {
 			//vo만들기
 			//세션에서 로그인한 사용자의 no를 가져온다.
 			//나머지정보는 파라미터로 받는다
-			int no = ((UserVo)session.getAttribute("authUser")).getNo();
+			int no = ((UserVo)session.getAttribute("authUser")).getNo();	//--> 세션에서 가온나 해서 가져옴.
 			String password = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String gender = request.getParameter("gender");
@@ -178,7 +186,7 @@ public class UserController extends HttpServlet {
 			
 			
 			//파라미터값 불러온다
-			int no = Integer.parseInt(request.getParameter("no"));	//id는 혹시라도 겹칠수 있으니 더 안전한 no로 함
+			int no = Integer.parseInt(request.getParameter("no"));	//새로 번호 부여하는건가?
 			String password = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String gender = request.getParameter("gender");

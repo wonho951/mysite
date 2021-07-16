@@ -4,7 +4,7 @@
 <%@ page import="com.javaex.vo.UserVo" %> 
 
 <%
-	UserVo authuser = (UserVo)session.getAttribute("authUser");	//이 값을 꺼내오셈.  형변환 해줘야함
+	UserVo authuser = (UserVo)session.getAttribute("authUser");	//authUser 값을 꺼내오셈.  형변환 해줘야함
 	System.out.println(authuser);
 %>
 

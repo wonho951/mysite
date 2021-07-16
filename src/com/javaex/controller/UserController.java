@@ -85,7 +85,7 @@ public class UserController extends HttpServlet {
 				//성공일때(아이디 비번 일치했을때) 세션에 저장	
 				HttpSession session = request.getSession();	//내놔 라고 요청함
 				session.setAttribute("authUser", userVo);	//authUser 는 별명. jsp에 데이터 전달할때 비교 --> request.setAttribute();
-				
+															// 실제 데이터는 userVo임
 				//리다이렉트
 				WebUtil.redirect(request, response, "/mysite/main");
 				
@@ -139,17 +139,18 @@ public class UserController extends HttpServlet {
 			
 		} else if ("modify".equals(action))	{
 			System.out.println("[UserController.modify]");
+			/*현재 로그인한 상태임*/
 			
+			/*
 			UserDao userDao = new UserDao();
 			
-			
 			//세션에서 no 가져옴
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession();	//세션 내놔
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
 			
 			
 			//파라미터값 불러온다
-			int no = Integer.parseInt(request.getParameter("no"));
+			int no = Integer.parseInt(request.getParameter("no"));	//id는 혹시라도 겹칠수 있으니 더 안전한 no로 함
 			String password = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String gender = request.getParameter("gender");
@@ -162,16 +163,44 @@ public class UserController extends HttpServlet {
 			//System.out.println(userVo);	//확인용
 
 			//update ㄱㄱ
-			userDao.getUserupdate(userVo);
+			userDao.getUserupdate(userVo);	
 			
 			
 			authUser.setName(name);
 			
-			session.setAttribute("authUser", userVo);
+			session.setAttribute("authUser", userVo);	//세션값 변경함
 			
 			
 			//메인으로 리다이렉트
 			WebUtil.redirect(request, response, "/mysite/main");
+			*/
+			
+			
+			
+			
+			/*선생님 코드*/
+			HttpSession session = request.getSession();	//세션 내놔
+			
+			//vo만들기
+			//세션에서 로그인한 사용자의 no를 가져온다.
+			//나머지정보는 파라미터로 받는다
+			int no = ((UserVo)session.getAttribute("authUser")).getNo();
+			String password = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			
+			UserVo userVo = new UserVo(no, password, name, gender);
+			
+			//db에 업데이트
+			UserDao userDao = new UserDao();
+			int count = userDao.getUserupdate(userVo);
+			
+			//세션에 이름정보 업데이트(수정)
+			((UserVo)session.getAttribute("authUser")).setName(name);
+			
+			//리다이렉트
+			WebUtil.redirect(request, response, "/mysite/main");
+			
 		} 
 		
 	}
@@ -179,5 +208,7 @@ public class UserController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	//파라미터 = 데이터 있는곳
+	//세션 안에 어트리뷰트와 리퀘스트 안에 어트리뷰트는 다름.
+	//session. 하는 순간 그 세션의 값만 가져옴. 다른 세션에 접근 불가.
 }

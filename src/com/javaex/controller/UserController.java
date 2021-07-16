@@ -139,6 +139,34 @@ public class UserController extends HttpServlet {
 			
 		} else if ("modify".equals(action))	{
 			System.out.println("[UserController.modify]");
+			
+			
+			/*선생님 코드*/
+			HttpSession session = request.getSession();	//세션 내놔
+			
+			//vo만들기
+			//세션에서 로그인한 사용자의 no를 가져온다.
+			//나머지정보는 파라미터로 받는다
+			int no = ((UserVo)session.getAttribute("authUser")).getNo();
+			String password = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			
+			UserVo userVo = new UserVo(no, password, name, gender);
+			
+			//db에 업데이트
+			UserDao userDao = new UserDao();
+			int count = userDao.getUserupdate(userVo);
+			
+			//세션에 이름정보 업데이트(수정)
+			((UserVo)session.getAttribute("authUser")).setName(name);
+			
+			//리다이렉트
+			WebUtil.redirect(request, response, "/mysite/main");
+			
+			
+			
+			
 			/*현재 로그인한 상태임*/
 			
 			/*
@@ -177,29 +205,7 @@ public class UserController extends HttpServlet {
 			
 			
 			
-			
-			/*선생님 코드*/
-			HttpSession session = request.getSession();	//세션 내놔
-			
-			//vo만들기
-			//세션에서 로그인한 사용자의 no를 가져온다.
-			//나머지정보는 파라미터로 받는다
-			int no = ((UserVo)session.getAttribute("authUser")).getNo();
-			String password = request.getParameter("pw");
-			String name = request.getParameter("name");
-			String gender = request.getParameter("gender");
-			
-			UserVo userVo = new UserVo(no, password, name, gender);
-			
-			//db에 업데이트
-			UserDao userDao = new UserDao();
-			int count = userDao.getUserupdate(userVo);
-			
-			//세션에 이름정보 업데이트(수정)
-			((UserVo)session.getAttribute("authUser")).setName(name);
-			
-			//리다이렉트
-			WebUtil.redirect(request, response, "/mysite/main");
+
 			
 		} 
 		

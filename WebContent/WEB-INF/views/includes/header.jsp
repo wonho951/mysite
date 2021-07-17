@@ -1,31 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- 조건문 쓰려면 반드시 사용해야함. lib에 jar 추가도 잊지 말기. -->
 
-<%@ page import="com.javaex.vo.UserVo" %> 
-
-<%
-	UserVo authuser = (UserVo)session.getAttribute("authUser");	//authUser 값을 꺼내오셈.  형변환 해줘야함
-	System.out.println(authuser);
-%>
 
 		<div id="header" class="clearfix">
 			<h1>
 				<a href="/mysite/main">MySite</a>
 			</h1>
-
-			<% if(authuser != null){	//로그인 성공이라면 %>
-				<ul>
-					<li><%=authuser.getName() %> 님 안녕하세요^^</li>
-					<li><a href="/mysite/user?action=logout" class="btn_s">로그아웃</a></li>
-					<li><a href="/mysite/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
-				</ul>			
-			<% } else { %>
+			
+			<c:choose>
+				<c:when test = "${empty authUser }">
 					<ul>
 						<li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
 						<li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>
 					</ul>
-			<%} %>
+				</c:when>
 				
+				<c:otherwise>
+					<ul>
+						<li>${authUser.name } 님 안녕하세요^^</li>
+						<li><a href="/mysite/user?action=logout" class="btn_s">로그아웃</a></li>
+						<li><a href="/mysite/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
+					</ul>							
+				</c:otherwise>
+			</c:choose>			
 		</div>
 		<!-- //header -->
 

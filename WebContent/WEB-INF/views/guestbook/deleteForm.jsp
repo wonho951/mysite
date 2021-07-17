@@ -68,7 +68,7 @@
 								</td>
 							</tr>
 						</table>
-						<input type='hidden' name="no" value=<%=no %>>
+						<input type='hidden' name="no" value=${param.no }>
 						<input type='hidden' name="action" value="delete">
 					</form>
 

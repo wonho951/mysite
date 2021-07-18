@@ -11,7 +11,7 @@
 			</h1>
 			
 			<c:choose>
-				<c:when test = "${empty authUser }">	<!-- 로그인 안했을때 -->
+				<c:when test = "${empty authUser }">	<!-- 로그인 안했을때 	근데 대체 주석을 왜 choose위에 달면 안되는거지?-->
 					<ul>
 						<li><a href="/mysite/user?action=loginForm" class="btn_s">로그인</a></li>
 						<li><a href="/mysite/user?action=joinForm" class="btn_s">회원가입</a></li>

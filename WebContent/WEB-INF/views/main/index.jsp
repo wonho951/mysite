@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="com.javaex.vo.UserVo" %>  
 
-<%
-	UserVo authuser = (UserVo)session.getAttribute("authUser");	//이 값을 꺼내오셈.  형변환 해줘야함
-	System.out.println(authuser);
-%>
 	  
 		    
 <!DOCTYPE html>
@@ -52,7 +47,7 @@
 							<br>
 							(자유롭게 꾸며보세요!!)<br>
 							<br><br>
-							<a class="" href="/mysite/guestbook?action=addList">[방명록에 글 남기기]</a>
+							<a class="" href="/mysite/guest?action=addList">[방명록에 글 남기기]</a>
 						</p>	
 					</div>
 					<!-- //greetings -->

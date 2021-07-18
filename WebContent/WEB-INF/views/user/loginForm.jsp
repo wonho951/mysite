@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<% String result = request.getParameter("result"); %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -61,11 +64,16 @@
 							</div>
 
 
-							<%if("fail".equals(result)){ %>
-							<p>
-								로그인에 실패했습니다. 다시 로그인해 주세요
-							</p>
-							<% } %>
+
+							<c:if test = "${param.result != fail}">	<!-- 이거 왜지...? 이해가 잘 안되넹; -->
+								<p>로그인에 실패했습니다. 다시 로그인해 주세요.</p>
+							</c:if>
+
+<%-- 							<%if("fail".equals(result)){ %> --%>
+<!-- 							<p> -->
+<!-- 								로그인에 실패했습니다. 다시 로그인해 주세요 -->
+<!-- 							</p> -->
+<%-- 							<% } %> --%>
 
 
 							<!-- 버튼영역 -->

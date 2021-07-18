@@ -82,7 +82,7 @@
 								<span class="form-text">성별</span> 
 								
 								
-								<c:if test = "${authUser.gender == 'male' }">	<!-- "male" 이렇게 하면 에러나고 'male' 이렇게하면 에러 안나넹 -->
+								<c:if test = "${authUser.gender == 'male' }">	<!-- "male" 이렇게 하면 에러나고 'male' 이렇게하면 에러 안남.  ' ' 이게 string 감싸는 거인듯 -->
 									<label for="rdo-male">남</label> 
 									<input type="radio" id="rdo-male" name="gender" value="male" checked = "checked"> 
 									

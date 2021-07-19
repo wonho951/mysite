@@ -2,21 +2,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ page import="com.javaex.vo.GuestbookVo" %>
-<%@ page import="java.util.List" %> 
-<%@ page import="com.javaex.vo.UserVo" %>
-
-
-<% 	
-	//로그인관련
-	UserVo authuser= (UserVo)session.getAttribute("authUser");
-	
-	
-	//리스트 출력관련
-	List<GuestbookVo> guestbookList = (List<GuestbookVo>)request.getAttribute("gList");
-	
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,7 +87,7 @@
 
 
 
-				<c:forEach items = "gList" var = "guestList">
+				<c:forEach items = "${gList}" var = "guestList">
 					<table class="guestRead">
 						<colgroup>
 							<col style="width: 10%;">
@@ -111,15 +96,15 @@
 							<col style="width: 10%;">
 						</colgroup>
 						<tr>
-							<td>${guestList.no }</td>
-							<td>${guestList.name }</td>
-							<td>${guestList.regDate }</td>
+							<td>${guestList.no}</td>
+							<td>${guestList.name}</td>
+							<td>${guestList.regDate}</td>
 							<td>
-								<a href="/mysite/guest?action=dform&no=${guestList.no }">삭제</a>>
+								<a href="/mysite/guest?action=dform&no=${guestList.no}">삭제</a>>
 							</td>
 						</tr>
 						<tr>
-							<td colspan=4 class="text-left">${guestList.content }</td>
+							<td colspan=4 class="text-left">${guestList.content}</td>
 						</tr>
 					</table>
 				</c:forEach>

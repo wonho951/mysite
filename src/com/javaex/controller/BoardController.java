@@ -41,7 +41,7 @@ public class BoardController extends HttpServlet {
 			
 			WebUtil.forword(request, response, "/WEB-INF/views/board/list.jsp");
 			
-		} /*else if ("read".equals(action)) {
+		} else if ("read".equals(action)) {
 			System.out.println("읽기");
 			
 			//파라미터 꺼내오기
@@ -52,15 +52,14 @@ public class BoardController extends HttpServlet {
 			boardDao.hitUpdate(no);
 			
 			BoardVo boradVo = boardDao.getBoard(no);
-			System.out.println(boradVo);
 			
 			//어트리뷰트에 데이터 넣기
 			request.setAttribute("boardRead", boradVo);
 			System.out.println(boradVo);
 			//포워드
 			WebUtil.forword(request, response, "/WEB-INF/views/board/read.jsp");
-			System.out.println("넘어옴?");
-		}*/ else if ("wform".equals(action)) {
+			
+		} else if ("wform".equals(action)) {
 			System.out.println("글쓰기폼");
 			
 			WebUtil.forword(request, response, "/WEB-INF/views/board/writeForm.jsp");
@@ -68,7 +67,7 @@ public class BoardController extends HttpServlet {
 		} else if ("write".equals(action)) {
 			System.out.println("글쓰기");
 			
-			//세션 no가져옴
+			//세션 authUser가져옴
 			HttpSession session = request.getSession();
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
 			int userNo = authUser.getNo();

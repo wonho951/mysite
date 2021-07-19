@@ -53,7 +53,7 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<span class="text-large bold">${authUser.id }></span>
+								<span class="text-large bold">${authUser.id }</span>
 								<input type = "hidden" name = "action" value = "modify">
 								<input type = "hidden" name = "no" value = "${authUser.no }">
 							</div>

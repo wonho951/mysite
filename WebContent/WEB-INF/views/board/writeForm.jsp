@@ -59,7 +59,7 @@
 							
 							<a id="btn_cancel" href="/mysite/board?action=list">취소</a>
 							<button id="btn_add" type="submit" >등록</button>
-							<input type = "text" name = "action" value = "write">
+							<input type = "text" name = "action" value = "write"><!-- 컨트롤러에 write로 넘김 -->
 						</form>
 						<!-- //form -->
 					</div>

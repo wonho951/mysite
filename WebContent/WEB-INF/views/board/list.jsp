@@ -53,6 +53,7 @@
 							<div class="form-group text-right">
 								<input type="text">
 								<button type="submit" id=btn_search>검색</button>
+								<!-- 검색용 만들기 -->
 							</div>
 						</form>
 						<table>
@@ -77,7 +78,7 @@
 										<td>${boardList.name }</td>
 										<td>${boardList.hit }</td>
 										<td>${boardList.regDate }</td>
-										<td>
+										<td>	<!-- if문 쓰기 -->
 											<a href="/mysite/board?action=delete&no${boardList.no }">[삭제]</a>
 										</td>
 									</tr>
@@ -104,6 +105,7 @@
 
 							<div class="clear"></div>
 						</div>
+						<!-- 로그인한 사용자만 보이게 만들어야함. if문 써야할듯 -->
 						<a id="btn_write" href="/mysite/board?action=wform">글쓰기</a>
 
 					</div>

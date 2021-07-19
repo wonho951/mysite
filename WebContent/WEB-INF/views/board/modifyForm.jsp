@@ -46,7 +46,7 @@
 				<div id="board">
 					<div id="modifyForm">
 						<form action="/mysite/board" method="get">
-							<!-- 작성자 -->
+							<!-- 작성자 request에서 받아오는 name 밑으로 다 마찬가지 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
 								<span class="form-value">${bVo.name}</span>
@@ -78,7 +78,8 @@
 							<a id="btn_cancel" href="/WEB-INF/views/board/list.jsp">취소</a>
 							<button id="btn_modify" type="submit">수정</button>
 							<input type = "text" name = "action" value = "modify">
-							<input type = "text" name = "no" value = "${bVo.no}">
+							
+							<input type = "text" name = "no" value = "${bVo.no}"><!-- 없으면 업데이트가 아니라 없데이트임 -->
 						</form>
 						<!-- //form -->
 					</div>

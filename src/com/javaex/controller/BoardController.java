@@ -85,7 +85,10 @@ public class BoardController extends HttpServlet {
 			//리다이렉트 -> 리스트
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
+		} else if ("modifyBoard".equals(action)) {
+			
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

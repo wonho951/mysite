@@ -60,23 +60,23 @@
 							<!-- 작성일 -->
 							<div class="form-group">
 								<span class="form-text">작성일</span>
-								<span class="form-value">${boradRead.regDate }</span>
+								<span class="form-value">${boardRead.regDate }</span>
 							</div>
 							
 							<!-- 제목 -->
 							<div class="form-group">
 								<span class="form-text">제 목</span>
-								<span class="form-value">${boradRead.title }</span>
+								<span class="form-value">${boardRead.title }</span>
 							</div>
 						
 							<!-- 내용 -->
 							<div id="txt-content">
 								<span class="form-value" >
-									${boradRead.content }
+									${boardRead.content }
 								</span>
 							</div>
 							
-							<a id="btn_modify" href="">수정</a>
+							<a id="btn_modify" href="/mysite/board?action=list">수정</a>
 							<a id="btn_modify" href="/mysite/board?action=list">목록</a>
 							
 						</form>

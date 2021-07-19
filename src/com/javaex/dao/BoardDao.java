@@ -108,7 +108,7 @@ public class BoardDao {
 	public BoardVo getBoard(int no) {
 
 		BoardVo boardVo = null; // 변수만 잡음
-		
+
 		this.getConnection();
 
 		try {
@@ -153,11 +153,12 @@ public class BoardDao {
 		return boardVo;
 	}
 
+	
 	// 조회수 증가
 	public int hitUpdate(int no) {
-		
+
 		int count = 0;
-		
+
 		this.getConnection();
 
 		try {
@@ -175,7 +176,7 @@ public class BoardDao {
 			count = pstmt.executeUpdate(); // 쿼리문 실행
 
 			// 4.결과처리
-			 System.out.println(count + "건 증가");
+			System.out.println(count + "건 증가");
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
@@ -185,6 +186,7 @@ public class BoardDao {
 		return count;
 	}
 
+	
 	// 글 등록
 	public int boardInsert(BoardVo boardVo) {
 
@@ -213,6 +215,40 @@ public class BoardDao {
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}
+		close();
+		return count;
+	}
+
+	
+	// 게시글 수정
+	public int boardUpdate(BoardVo boardVo) {
+		int count = 0;
+		getConnection();
+
+		try {
+
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query = ""; // 쿼리문 문자열만들기, ? 주의
+			query += " update board ";
+			query += " set title = ?, ";
+			query += "     content = ? ";
+			query += " where no = ? ";
+
+			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
+
+			pstmt.setString(1, boardVo.getTitle()); // ?(물음표) 중 1번째, 순서중요
+			pstmt.setString(2, boardVo.getContent()); // ?(물음표) 중 2번째, 순서중요
+			pstmt.setInt(3, boardVo.getNo()); // ?(물음표) 중 3번째, 순서중요
+
+			count = pstmt.executeUpdate(); // 쿼리문 실행
+
+			// 4.결과처리
+			// System.out.println(count + "건 수정되었습니다.");
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+
 		close();
 		return count;
 	}

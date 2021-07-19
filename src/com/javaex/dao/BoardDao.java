@@ -105,6 +105,7 @@ public class BoardDao {
 
 	}
 
+	
 	// 게시판 글 조회하기
 	public BoardVo getBoard(int no) {
 

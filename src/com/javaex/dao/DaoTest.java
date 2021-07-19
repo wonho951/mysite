@@ -21,6 +21,9 @@ public class DaoTest {
 		UserVo userVo = userDao.getUser("wonho", "123");
 		System.out.println(userVo);
 		
+		
+		//2021.07.19 board test
+		BoardDao boardDao = new BoardDao();
 	}
 
 }

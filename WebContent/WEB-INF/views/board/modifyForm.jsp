@@ -72,7 +72,7 @@
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content">
+								<textarea id="txt-content" name = "content">	<!-- name가 없어서 안됐었네 -->
 									${bVo.content}
 								</textarea>
 							</div>

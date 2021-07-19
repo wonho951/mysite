@@ -117,6 +117,17 @@ public class BoardController extends HttpServlet {
 			
 			//리다이렉트 --> 리스트로 다시 보냄
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
+			
+		} else if("delete".equals(action)) {
+			System.out.println("삭제");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			boardVo = new BoardVo(no);
+			boardDao.boardDelete(boardVo);
+			
+			WebUtil.redirect(request, response, "/mysite/board?action=list");
+			
 		}
 		
 	}

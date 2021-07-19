@@ -70,11 +70,9 @@
 								<input type="text" id="txt-title" name="title" value="${bVo.title}">
 							</div>
 						
-							<!-- 내용 -->
+							<!-- 내용 --><!-- name 써주기 왜 저기에 쓰면 주석으로 막아도 보이냐;; -->
 							<div class="form-group">
-								<textarea id="txt-content" name = "content">	<!-- name가 없어서 안됐었네 -->
-									${bVo.content}
-								</textarea>
+								<textarea id="txt-content" name = "content">${bVo.content}</textarea>
 							</div>
 							
 							<a id="btn_cancel" href="/WEB-INF/views/board/list.jsp">취소</a>

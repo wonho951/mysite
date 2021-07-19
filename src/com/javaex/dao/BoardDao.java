@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.javaex.vo.BoardVo;
+import com.javaex.vo.GuestbookVo;
 
 public class BoardDao {
 
@@ -244,6 +245,36 @@ public class BoardDao {
 
 			// 4.결과처리
 			// System.out.println(count + "건 수정되었습니다.");
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+
+		close();
+		return count;
+	}
+	
+	
+	// 게시글 삭제
+	public int boardDelete(BoardVo boardVo) {
+		int count = 0;
+		getConnection();
+
+		try {
+			// 3. SQL문 준비 / 바인딩 / 실행
+			String query = ""; // 쿼리문 문자열만들기, ? 주의
+			query += " delete from board ";
+			query += " where no = ? ";
+			
+			System.out.println(query);
+			
+			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
+
+			pstmt.setInt(1, boardVo.getNo() );// ?(물음표) 중 1번째, 순서중요
+			count = pstmt.executeUpdate(); // 쿼리문 실행
+
+			// 4.결과처리
+			// System.out.println(count + "건 삭제되었습니다.");
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);

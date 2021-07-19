@@ -43,7 +43,14 @@ public class BoardController extends HttpServlet {
 			//파라미터 꺼내오기
 			int no = Integer.parseInt(request.getParameter("no"));
 			
+			//파라미터 꺼내서 조회했으니 조회수를 올려라
+			boardDao.hitUpdate(no);
 			
+			//어트리뷰트에 데이터 넣기
+			request.setAttribute("boardRead", boardDao);
+			
+			//포워드
+			WebUtil.forword(request, response, "/WEB-INF/views/board/read.jsp");
 			
 		} else if ("wform".equals(action)) {
 			System.out.println("글쓰기폼");

@@ -44,7 +44,7 @@
 	
 				<div id="board">
 					<div id="read">
-						<form action="#" method="get">
+						<form action="/mysite/board" method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>

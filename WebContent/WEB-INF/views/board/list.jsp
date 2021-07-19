@@ -67,18 +67,18 @@
 								</tr>
 							</thead>
 							
-							<c:forEach items = "${boardList }" var = "bVo">
+							<c:forEach items = "${boardList }" var = "boardList">
 								<tbody>
 									<tr>
-										<td>${bVo.no }</td>
+										<td>${boardList.no }</td>
 										<td class="text-left">
-											<a href="/mysite/board?action=read&no=${bVo.no }">${bVo.title }</a>
+											<a href="/mysite/board?action=read&no=${boardList.no }">${boardList.title }</a>
 										</td>
-										<td>${bVo.name }</td>
-										<td>${bVo.hit }</td>
-										<td>${bVo.regDate }</td>
+										<td>${boardList.name }</td>
+										<td>${boardList.hit }</td>
+										<td>${boardList.regDate }</td>
 										<td>
-											<a href="/mysite/board?action=delete&no${bVo.no }">[삭제]</a>
+											<a href="/mysite/board?action=delete&no${boardList.no }">[삭제]</a>
 										</td>
 									</tr>
 								</tbody>

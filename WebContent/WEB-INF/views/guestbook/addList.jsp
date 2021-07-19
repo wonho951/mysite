@@ -98,7 +98,9 @@
 
 					</form>
 
-				<% for (int i = 0; i < guestbookList.size(); i++) {%>
+
+
+				<c:forEach items = "gList" var = "guestList">
 					<table class="guestRead">
 						<colgroup>
 							<col style="width: 10%;">
@@ -107,18 +109,41 @@
 							<col style="width: 10%;">
 						</colgroup>
 						<tr>
-							<td><%= guestbookList.get(i).getNo() %></td>
-							<td><%= guestbookList.get(i).getName() %></td>
-							<td><%= guestbookList.get(i).getRegDate() %></td>
+							<td>${guestList.no }</td>
+							<td>${guestList.name }</td>
+							<td>${guestList.regDate }</td>
 							<td>
-								<a href="/mysite/guest?action=dform&no=<%= guestbookList.get(i).getNo()%>">삭제</a>>
+								<a href="/mysite/guest?action=dform&no=${guestList.no }">삭제</a>>
 							</td>
 						</tr>
 						<tr>
-							<td colspan=4 class="text-left"><%= guestbookList.get(i).getContent() %></td>
+							<td colspan=4 class="text-left">${guestList.content }</td>
 						</tr>
 					</table>
-				<%} %>
+				</c:forEach>
+				
+				
+<%-- 				<% for (int i = 0; i < guestbookList.size(); i++) {%> --%>
+<!-- 					<table class="guestRead"> -->
+<!-- 						<colgroup> -->
+<!-- 							<col style="width: 10%;"> -->
+<!-- 							<col style="width: 40%;"> -->
+<!-- 							<col style="width: 40%;"> -->
+<!-- 							<col style="width: 10%;"> -->
+<!-- 						</colgroup> -->
+<!-- 						<tr> -->
+<%-- 							<td><%= guestbookList.get(i).getNo() %></td> --%>
+<%-- 							<td><%= guestbookList.get(i).getName() %></td> --%>
+<%-- 							<td><%= guestbookList.get(i).getRegDate() %></td> --%>
+<!-- 							<td> -->
+<%-- 								<a href="/mysite/guest?action=dform&no=<%= guestbookList.get(i).getNo()%>">삭제</a>> --%>
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<%-- 							<td colspan=4 class="text-left"><%= guestbookList.get(i).getContent() %></td> --%>
+<!-- 						</tr> -->
+<!-- 					</table> -->
+<%-- 				<%} %> --%>
 					<!-- //guestRead -->
 
 				</div>

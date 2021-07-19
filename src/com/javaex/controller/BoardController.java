@@ -62,6 +62,7 @@ public class BoardController extends HttpServlet {
 		} else if ("wform".equals(action)) {
 			System.out.println("글쓰기폼");
 			
+			//포워드
 			WebUtil.forword(request, response, "/WEB-INF/views/board/writeForm.jsp");
 			
 		} else if ("write".equals(action)) {
@@ -85,8 +86,37 @@ public class BoardController extends HttpServlet {
 			//리다이렉트 -> 리스트
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
-		} else if ("modifyBoard".equals(action)) {
+		} else if ("boardModify".equals(action)) {
+			System.out.println("수정 폼");
 			
+			//no추출
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+			//dao에서 게시판 데이터 가져오기
+			boardVo = boardDao.getBoard(no);
+			
+			//데이터 넣기 -- request  어트리뷰트에 데이터를 넣어준다.
+			request.setAttribute("bVo", boardVo);
+			
+			//포워드
+			WebUtil.forword(request, response, "/WEB-INF/views/board/modifyForm.jsp");
+			
+		} else if ("modify".equals(action)) {
+			System.out.println("수정하기");
+			
+			//파라미터 꺼내오기
+			int no = Integer.parseInt(request.getParameter("no"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			//vo로 묶음
+			boardVo = new BoardVo(no, title, content);
+			
+			//dao에 데이터 업데이트
+			boardDao.boardUpdate(boardVo);
+			
+			//리다이렉트 --> 리스트로 다시 보냄
+			WebUtil.redirect(request, response, "/mysite/board?action=list");
 		}
 		
 	}

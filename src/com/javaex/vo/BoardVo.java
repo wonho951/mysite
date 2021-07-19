@@ -18,13 +18,21 @@ public class BoardVo {
 	}
 	
 	
-	public BoardVo(int no) {
+	public BoardVo(int no) {	//조회수에 필요
 		super();
 		this.no = no;
 	}
+	
+
+	public BoardVo(int no, String title, String content) {	//수정에 필요
+		super();
+		this.no = no;
+		this.title = title;
+		this.content = content;
+	}
 
 
-	public BoardVo(String title, String content, int userNo) {
+	public BoardVo(String title, String content, int userNo) {	//글쓰기에 필요
 		super();
 		this.title = title;
 		this.content = content;

@@ -76,7 +76,7 @@
 								</span>
 							</div>
 							
-							<a id="btn_modify" href="/mysite/board?action=list">수정</a>
+							<a id="btn_modify" href="/mysite/board?action=boardModify">수정</a>
 							<a id="btn_modify" href="/mysite/board?action=list">목록</a>
 							
 						</form>

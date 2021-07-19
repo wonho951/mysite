@@ -45,7 +45,7 @@
 	
 				<div id="board">
 					<div id="modifyForm">
-						<form action="#" method="get">
+						<form action="/mysite/board" method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
@@ -86,8 +86,9 @@
 							</div>
 							
 							<a id="btn_cancel" href="./list.jsp">취소</a>
-							<button id="btn_modify" type="submit" >수정</button>
-							
+							<a id="btn_modify"  href="/mysite/board?action=boardModifyd&no=${bVo.no}">수정</a>
+							<button id="btn_modify" type="submit">수정</button>
+							<input type = "text" name = "action" value = "modify">
 						</form>
 						<!-- //form -->
 					</div>

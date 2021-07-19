@@ -49,46 +49,38 @@
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
-								<span class="form-value">정우성</span>
+								<span class="form-value">${bVo.name}</span>
 							</div>
 							
 							<!-- 조회수 -->
 							<div class="form-group">
 								<span class="form-text">조회수</span>
-								<span class="form-value">123</span>
+								<span class="form-value">${bVo.hit}</span>
 							</div>
 							
 							<!-- 작성일 -->
 							<div class="form-group">
 								<span class="form-text">작성일</span>
-								<span class="form-value">2020-03-02</span>
+								<span class="form-value">${bVo.regDate}</span>
 							</div>
 							
 							<!-- 제목 -->
 							<div class="form-group">
 								<label class="form-text" for="txt-title">제목</label>
-								<input type="text" id="txt-title" name="" value="여기에는 글제목이 출력됩니다.">
+								<input type="text" id="txt-title" name="title" value="${bVo.title}">
 							</div>
-						
-							
 						
 							<!-- 내용 -->
 							<div class="form-group">
-								<textarea id="txt-content">여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
-															여기에는 본문내용이 출력됩니다.
+								<textarea id="txt-content">
+									${bVo.content}
 								</textarea>
 							</div>
 							
-							<a id="btn_cancel" href="./list.jsp">취소</a>
-							<a id="btn_modify"  href="/mysite/board?action=boardModifyd&no=${bVo.no}">수정</a>
+							<a id="btn_cancel" href="/WEB-INF/views/board/list.jsp">취소</a>
 							<button id="btn_modify" type="submit">수정</button>
 							<input type = "text" name = "action" value = "modify">
+							<input type = "text" name = "no" value = "${bVo.no}">
 						</form>
 						<!-- //form -->
 					</div>

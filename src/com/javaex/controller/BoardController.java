@@ -91,7 +91,7 @@ public class BoardController extends HttpServlet {
 			
 			//no추출
 			int no = Integer.parseInt(request.getParameter("no"));
-			
+			System.out.println(no);
 			//dao에서 게시판 데이터 가져오기
 			boardVo = boardDao.getBoard(no);
 			

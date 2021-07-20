@@ -303,14 +303,13 @@ public class BoardDao {
 
 			// 3. SQL문 준비 / 바인딩 / 실행 --> 완성된 sql문을 가져와서 작성할것
 			String query = "";
-			query += " select  board.no, ";
-			query += "         board.title, ";
-			query += "         board.hit, ";
-			query += "         reg_date, ";
-			query += "          to_char(bo.reg_date, 'YYYY-MM-DD HH24:MI') reg_date, ";
-			query += "         user.name ";
-			query += " from board, users";
-			query += " where board.user_no = user.no ";
+			query += " select  bo.no, ";
+			query += "         bo.title, ";
+			query += "         bo.hit, ";
+			query += "         to_char(bo.reg_date, 'YYYY-MM-DD HH24:MI') reg_date, ";
+			query += "         us.no userNo ";
+			query += " from board bo, users us ";
+			query += " where bo.user_no = us.no ";
 
 			if (keword == "" || keword.equals("")) {	//키워드가 없을때
 				query += " order by reg_date desc ";

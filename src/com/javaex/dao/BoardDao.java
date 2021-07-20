@@ -81,18 +81,15 @@ public class BoardDao {
 			query += "		   board.user_no ";
 			query += " from users, board ";
 			query += " where users.no = board.user_no ";
-			query += " and board.title like ? ";
 			query += " order by reg_date desc ";
 
 			if (keword != "" || keword == null) {
-				query += " where name like ? ";
-				query += " or title like  ? ";
-				query += " or content like ? ";
+				query += " where board.title like ? ";
+				query += " or users.name like  ? ";
 				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 
 				pstmt.setString(1, '%' + keword + '%'); // ?(물음표) 중 1번째, 순서중요
 				pstmt.setString(2, '%' + keword + '%'); // ?(물음표) 중 2번째, 순서중요
-				pstmt.setString(3, '%' + keword + '%'); // ?(물음표) 중 3번째, 순서중요
 			} else {
 				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 			}
@@ -122,39 +119,6 @@ public class BoardDao {
 		return boardList;
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

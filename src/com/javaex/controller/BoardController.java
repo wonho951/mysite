@@ -128,6 +128,17 @@ public class BoardController extends HttpServlet {
 			
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
+		} else if("search".equals(action)) {
+			System.out.println("검색");
+						
+			String keyword = request.getParameter("keyword");
+			
+			List<BoardVo> searchList = boardDao.getBoardList(keyword);
+			
+			request.setAttribute("searchList", searchList);
+			System.out.println(searchList);
+			
+			WebUtil.forword(request, response, "/board?action=list");
 		}
 		
 	}

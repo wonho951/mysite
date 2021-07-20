@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.javaex.vo.BoardVo;
-import com.javaex.vo.PersonVo;
 
 public class BoardDao {
 
@@ -59,7 +58,7 @@ public class BoardDao {
 	
 	
 	//게시판 리스트(검색안할때)
-	public List<BoardVo> getPersonList() {
+	public List<BoardVo> getBoardList() {
 		return getBoardList("");
 	}
 
@@ -160,7 +159,7 @@ public class BoardDao {
 	
 	
 	// 게시판 리스트
-	public List<BoardVo> getBoardList() {
+	/*public List<BoardVo> getBoardList() {
 
 		// 리스트 생성
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
@@ -206,7 +205,7 @@ public class BoardDao {
 
 		return boardList;
 
-	}
+	}*/
 
 	// 게시판 글 조회하기
 	public BoardVo getBoard(int no) {

@@ -23,7 +23,7 @@ public class DaoTest {
 		//System.out.println(userVo);
 		
 		
-		//2021.07.19 board test
+		//2021.07.20 board test
 		BoardDao boardDao = new BoardDao();
 		BoardVo boardVo = new BoardVo();
 		

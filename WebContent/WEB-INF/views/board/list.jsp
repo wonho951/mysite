@@ -53,6 +53,7 @@
 							<div class="form-group text-right">
 								<input type="text">
 								<button type="submit" id=btn_search>검색</button>
+								<input type="hidden" name="action" value="list">
 								<!-- 검색용 만들기 -->
 							</div>
 						</form>

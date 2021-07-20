@@ -294,7 +294,7 @@ public class BoardDao {
 	}
 
 	// 사람 리스트(검색할때)
-	public List<BoardVo> getBoardList(String keword) {
+	public List<BoardVo> getBoardList(String keyword) {
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 
 		getConnection();
@@ -305,24 +305,26 @@ public class BoardDao {
 			String query = "";
 			query += " select  bo.no, ";
 			query += "         bo.title, ";
+			query += "         bo.content, ";
+			query += "         us.name, ";
 			query += "         bo.hit, ";
-			query += "         to_char(bo.reg_date, 'YYYY-MM-DD HH24:MI') reg_date, ";
-			query += "         us.no userNo ";
+			query += "         bo.reg_date, ";
+			query += "         us.no user_no ";
 			query += " from board bo, users us ";
 			query += " where bo.user_no = us.no ";
 
-			if (keword == "" || keword.equals("")) {	//키워드가 없을때
+			if (keyword == null || keyword.equals("")) {	//키워드가 없을때
+				
 				query += " order by reg_date desc ";
 				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-
 				
 			} else {	//키워드가 있을때
 				
-				query += " and board.title ? ";
+				query += " and bo.title like ? ";
 				query += " order by reg_date desc ";
 				
 				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-				pstmt.setString(1, '%' + keword + '%'); // ?(물음표) 중 1번째, 순서중요
+				pstmt.setString(1, '%' + keyword + '%'); // ?(물음표) 중 1번째, 순서중요
 			}
 
 			rs = pstmt.executeQuery();
@@ -333,8 +335,8 @@ public class BoardDao {
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				int hit = rs.getInt("hit");
-				String regDate = rs.getString("regDate");
-				int userNo = rs.getInt("uesrNo");
+				String regDate = rs.getString("reg_date");
+				int userNo = rs.getInt("user_no");
 				String name = rs.getString("name");
 
 				BoardVo boardVo = new BoardVo(no, title, content, hit, regDate, userNo, name);

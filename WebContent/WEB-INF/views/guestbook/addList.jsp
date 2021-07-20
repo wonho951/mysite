@@ -100,7 +100,7 @@
 							<td>${guestList.name}</td>
 							<td>${guestList.regDate}</td>
 							<td>
-								<a href="/mysite/guest?action=dform&no=${guestList.no}">삭제</a>>
+								<a href="/mysite/guest?action=dform&no=${guestList.no}">삭제</a>
 							</td>
 						</tr>
 						<tr>

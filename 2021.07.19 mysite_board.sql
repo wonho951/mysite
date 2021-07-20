@@ -29,7 +29,7 @@ create table board(
     no number,
     title varchar2(500) not null,
     content varchar2(4000),
-    hit number default 0,
+    hit number,
     reg_date date not null,
     user_no number not null,
     primary key(no),
@@ -51,7 +51,7 @@ values (seq_user_no.nextval, 'wonho', '123', '최원호', 'male');
 
 --보드 insert문
 insert into board  
-values (seq_board_no.nextval, '오늘말이지', '음.머리가 아프구만', default, sysdate, 1);
+values (seq_board_no.nextval, '오늘말이지', '음.머리가 아프구만', 0, sysdate, 1);
 
 
 commit;
@@ -60,10 +60,6 @@ commit;
 --확인용
 select  *
 from users;
-
-
-select  *
-from guestbook;
 
 
 select  *
@@ -80,7 +76,7 @@ select  board.no,
         board.user_no
 from users, board
 where users.no = board.user_no
-order by reg_date desc;
+order by board.no desc;
 
 
 --게시판 글 조회하기
@@ -93,7 +89,7 @@ select  board.no,
         board.user_no
 from users, board
 where users.no = board.user_no
-and board.no = 1;
+and board.no = 3;
 
 
 --조회수 업데이트
@@ -107,3 +103,21 @@ update board
 set title = '내일은',
     content = '내일로'
 where no = 1;
+
+
+--글삭제
+delete from board
+where no =4;
+
+
+--검색
+select  bo.no,
+        bo.title,
+        bo.content,
+        us.name,
+        bo.hit, 
+        bo.reg_date,
+        us.no user_no        
+from board bo, users us 
+where bo.user_no = us.no
+and bo.title like '%홀%';

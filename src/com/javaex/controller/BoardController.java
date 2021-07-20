@@ -37,6 +37,7 @@ public class BoardController extends HttpServlet {
 			
 			List<BoardVo> boardList = boardDao.getBoardList();
 			
+			
 			//어트리뷰트에 담음
 			request.setAttribute("boardList", boardList);
 			
@@ -135,18 +136,20 @@ public class BoardController extends HttpServlet {
 			//리다이렉트
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
-		} /*else if("search".equals(action)) {
+		} else if ("search".equals(action)) {
 			System.out.println("검색");
-						
+			
 			String keyword = request.getParameter("keyword");
 			
 			List<BoardVo> searchList = boardDao.getBoardList(keyword);
 			
-			request.setAttribute("searchList", searchList);
 			System.out.println(searchList);
 			
+			request.setAttribute("boardList", searchList);
+			
 			WebUtil.forword(request, response, "/WEB-INF/views/board/list.jsp");
-		}*/
+			
+		}
 		
 	}
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.javaex.vo.BoardVo;
+import com.javaex.vo.PersonVo;
 
 public class BoardDao {
 
@@ -55,6 +56,106 @@ public class BoardDao {
 		}
 	}
 
+	
+	
+	//게시판 리스트(검색안할때)
+	public List<BoardVo> getPersonList() {
+		return getBoardList("");
+	}
+
+	// 사람 리스트(검색할때)
+	public List<BoardVo> getBoardList(String keword) {
+		List<BoardVo> boardList = new ArrayList<BoardVo>();
+
+		this.getConnection();
+
+		try {
+
+			// 3. SQL문 준비 / 바인딩 / 실행 --> 완성된 sql문을 가져와서 작성할것
+			String query = "";
+			query += " select  board.no, ";
+			query += "         users.name, ";
+			query += "         board.title, ";
+			query += "         board.content, ";
+			query += "         board.hit, ";
+			query += "		   reg_date, ";
+			query += "		   board.user_no ";
+			query += " from users, board ";
+			query += " where users.no = board.user_no ";
+			query += " order by reg_date desc ";
+
+			if (keword != "" || keword == null) {
+				query += " where name like ? ";
+				query += " or title like  ? ";
+				query += " or content like ? ";
+				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
+
+				pstmt.setString(1, '%' + keword + '%'); // ?(물음표) 중 1번째, 순서중요
+				pstmt.setString(2, '%' + keword + '%'); // ?(물음표) 중 2번째, 순서중요
+				pstmt.setString(3, '%' + keword + '%'); // ?(물음표) 중 3번째, 순서중요
+			} else {
+				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
+			}
+
+			rs = pstmt.executeQuery();
+
+			// 4.결과처리
+			while (rs.next()) {
+				int personId = rs.getInt("person_id");
+				String name = rs.getString("name");
+				String hp = rs.getString("hp");
+				String company = rs.getString("company");
+
+				BoardVo personVo = new BoardVo(personId, name, hp, company);
+				personList.add(personVo);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+
+		close();
+
+		return personList;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 게시판 리스트
 	public List<BoardVo> getBoardList() {
 
@@ -284,33 +385,6 @@ public class BoardDao {
 	}
 
 	
-	// 게시글 삭제
-	/*public int boardDelete(BoardVo boardVo) {
-		int count = 0;
-		this.getConnection();
+	
 
-		try {
-			// 3. SQL문 준비 / 바인딩 / 실행
-			String query = ""; // 쿼리문 문자열만들기, ? 주의
-			query += " delete from board ";
-			query += " where no = ? ";
-			
-			System.out.println(query);
-			
-			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-
-			pstmt.setInt(1, boardVo.getNo() );// ?(물음표) 중 1번째, 순서중요
-			count = pstmt.executeUpdate(); // 쿼리문 실행
-
-			// 4.결과처리
-			// System.out.println(count + "건 삭제되었습니다.");
-
-		} catch (SQLException e) {
-			System.out.println("error:" + e);
-			System.out.println("?");
-		}
-
-		close();
-		return count;
-	}*/
 }

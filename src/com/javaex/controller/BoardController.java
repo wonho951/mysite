@@ -37,7 +37,7 @@ public class BoardController extends HttpServlet {
 			
 			List<BoardVo> boardList = boardDao.getBoardList();
 			
-			
+			//어트리뷰트에 담음
 			request.setAttribute("boardList", boardList);
 			
 			WebUtil.forword(request, response, "/WEB-INF/views/board/list.jsp");
@@ -95,6 +95,8 @@ public class BoardController extends HttpServlet {
 			System.out.println(no);
 			//dao에서 게시판 데이터 가져오기
 			boardVo = boardDao.getBoard(no);
+			System.out.println(boardVo);
+			
 			
 			//데이터 넣기 -- request  어트리뷰트에 데이터를 넣어준다.
 			request.setAttribute("bVo", boardVo);
@@ -112,6 +114,7 @@ public class BoardController extends HttpServlet {
 			
 			//vo로 묶음
 			boardVo = new BoardVo(no, title, content);
+			//System.out.println(boardVo);
 			
 			//dao에 데이터 업데이트
 			boardDao.boardUpdate(boardVo);
@@ -122,11 +125,14 @@ public class BoardController extends HttpServlet {
 		} else if("delete".equals(action)) {
 			System.out.println("삭제");
 	
+			//파라미터 꺼내옴
 			int no = Integer.parseInt(request.getParameter("no"));
-			System.out.println(no);
+			//System.out.println(no);
 			
+			//삭제
 			boardDao.boardDelete(no);
 			
+			//리다이렉트
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
 		} /*else if("search".equals(action)) {

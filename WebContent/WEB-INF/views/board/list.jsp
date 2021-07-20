@@ -68,19 +68,21 @@
 								</tr>
 							</thead>
 							
-							<c:forEach items = "${boardList }" var = "boardList">
+							<c:forEach items = "${requestScope.boardList }" var = "boardList">
 								<tbody>
 									<tr>
-										<td>${boardList.no }</td>
-										<td class="text-left">
-											<a href="/mysite/board?action=read&no=${boardList.no }">${boardList.title }</a>
-										</td>
-										<td>${boardList.name }</td>
-										<td>${boardList.hit }</td>
-										<td>${boardList.regDate }</td>
-										<td>	<!-- if문 쓰기 -->
-											<a href="/mysite/board?action=delete&no${boardList.no }">[삭제]</a>
-										</td>
+											<td>${boardList.no }</td>
+											<td class="text-left">
+												<a href="/mysite/board?action=read&no=${boardList.no }">${boardList.title }</a>
+											</td>
+											<td>${boardList.name }</td>
+											<td>${boardList.hit }</td>
+											<td>${boardList.regDate }</td>
+										<c:if test="${authUser.no == boardList.userNo}">									
+											<td>	<!-- if문 쓰기 -->
+												<a href="/mysite/board?action=delete&no${boardList.no }">[삭제]</a>
+											</td>
+										</c:if>
 									</tr>
 								</tbody>
 							</c:forEach>

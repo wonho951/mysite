@@ -120,11 +120,13 @@ public class BoardController extends HttpServlet {
 			
 		} else if("delete".equals(action)) {
 			System.out.println("삭제");
+	
+			int no = Integer.parseInt(request.getParameter("no"));	//???아니 왜 못꺼내오냐고ㅡㅡ
+			System.out.println(no);
 			
-			int no = Integer.parseInt(request.getParameter("no"));
+			boardDao.boardDelete(no);
 			
-			boardVo = new BoardVo(no);
-			boardDao.boardDelete(boardVo);
+			
 			
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			

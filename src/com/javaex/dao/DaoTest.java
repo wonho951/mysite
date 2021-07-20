@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+import com.javaex.vo.BoardVo;
 import com.javaex.vo.UserVo;
 
 public class DaoTest {
@@ -19,11 +20,19 @@ public class DaoTest {
 		//2021.07.15 세션 test
 		UserDao userDao = new UserDao();
 		UserVo userVo = userDao.getUser("wonho", "123");
-		System.out.println(userVo);
+		//System.out.println(userVo);
 		
 		
 		//2021.07.19 board test
 		BoardDao boardDao = new BoardDao();
+		BoardVo boardVo = new BoardVo();
+		
+		boardDao.getBoard(3);
+		
+		System.out.println(boardDao);
+		
+		
+		//boardDao.boardDelete(3);
 	}
 
 }

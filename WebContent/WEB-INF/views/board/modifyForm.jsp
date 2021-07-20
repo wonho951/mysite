@@ -75,7 +75,7 @@
 								<textarea id="txt-content" name = "content">${bVo.content}</textarea>
 							</div>
 							
-							<a id="btn_cancel" href="/WEB-INF/views/board/list.jsp">취소</a>
+							<a id="btn_cancel" href="/mysite/board?action=list">취소</a>
 							<button id="btn_modify" type="submit">수정</button>
 							<input type = "text" name = "action" value = "modify">
 							

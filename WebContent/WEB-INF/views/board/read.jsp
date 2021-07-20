@@ -76,7 +76,10 @@
 								</span>
 							</div>
 							
-							<a id="btn_modify" href="/mysite/board?action=boardModify&no=${boardRead.no }">수정</a>	<!-- 얘도 로그인한 상태에서만 보여야함. if일듯 -->
+							<c:if test="${authUser.no == boardRead.userNo}">
+								<a id="btn_modify" href="/mysite/board?action=boardModify&no=${boardRead.no }">수정</a>	<!-- 얘도 로그인한 상태에서만 보여야함. if일듯 -->
+							</c:if>
+							
 							<a id="btn_modify" href="/mysite/board?action=list">목록</a>
 							
 						</form>

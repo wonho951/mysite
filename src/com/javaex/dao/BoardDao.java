@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.javaex.vo.BoardVo;
-import com.javaex.vo.GuestbookVo;
 
 public class BoardDao {
 
@@ -177,7 +176,7 @@ public class BoardDao {
 			count = pstmt.executeUpdate(); // 쿼리문 실행
 
 			// 4.결과처리
-			System.out.println(count + "건 증가");
+			//System.out.println(count + "건 증가");
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
@@ -257,6 +256,7 @@ public class BoardDao {
 	
 	// 게시글 삭제
 	public int boardDelete(int no) {
+		int count = 0;
 		this.getConnection();
 
 		try {
@@ -270,7 +270,7 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 
 			pstmt.setInt(1, no );// ?(물음표) 중 1번째, 순서중요
-			pstmt.executeUpdate(); // 쿼리문 실행
+			count = pstmt.executeUpdate(); // 쿼리문 실행
 
 			// 4.결과처리
 			// System.out.println(count + "건 삭제되었습니다.");
@@ -280,7 +280,7 @@ public class BoardDao {
 		}
 
 		close();
-		return no;
+		return count;
 	}
 
 	

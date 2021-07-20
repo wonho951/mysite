@@ -68,19 +68,19 @@
 								</tr>
 							</thead>
 							
-							<c:forEach items = "${requestScope.boardList }" var = "boardList">
+							<c:forEach items = "${requestScope.boardList}" var = "boardList">
 								<tbody>
 									<tr>
-											<td>${boardList.no }</td>
+											<td>${boardList.no}</td>
 											<td class="text-left">
-												<a href="/mysite/board?action=read&no=${boardList.no }">${boardList.title }</a>
+												<a href="/mysite/board?action=read&no=${boardList.no}">${boardList.title}</a>
 											</td>
-											<td>${boardList.name }</td>
-											<td>${boardList.hit }</td>
-											<td>${boardList.regDate }</td>
+											<td>${boardList.name}</td>
+											<td>${boardList.hit}</td>
+											<td>${boardList.regDate}</td>
 										<c:if test="${authUser.no == boardList.userNo}">									
 											<td>	<!-- if문 쓰기 -->
-												<a href="/mysite/board?action=delete&no${boardList.no }">[삭제]</a>
+												<a href="/mysite/board?action=delete&no=${boardList.no}">[삭제]</a>
 											</td>
 										</c:if>
 									</tr>
@@ -107,9 +107,11 @@
 
 							<div class="clear"></div>
 						</div>
-						<!-- 로그인한 사용자만 보이게 만들어야함. if문 써야할듯 -->
-						<a id="btn_write" href="/mysite/board?action=wform">글쓰기</a>
-
+						
+						<c:if test="${!empty authUser}">	<!-- 사랑해요 구글 -->
+							<!-- 로그인한 사용자만 보이게 만들어야함. if문 써야할듯 -->
+							<a id="btn_write" href="/mysite/board?action=wform">글쓰기</a>
+						</c:if>
 					</div>
 					<!-- //list -->
 				</div>

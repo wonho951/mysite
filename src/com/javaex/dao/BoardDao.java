@@ -86,7 +86,8 @@ public class BoardDao {
 
 			if (keword != "" || keword == null) {
 				query += " where name like ? ";
-				
+				query += " or title like  ? ";
+				query += " or content like ? ";
 				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 
 				pstmt.setString(1, '%' + keword + '%'); // ?(물음표) 중 1번째, 순서중요

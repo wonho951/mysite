@@ -50,6 +50,16 @@ public class BoardVo {
 		this.userNo = userNo;
 	}
 
+	public BoardVo(int no, String title, String content, int hit, String regDate, int userNo, String name) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.title = title;
+		this.content = content;
+		this.hit = hit;
+		this.regDate = regDate;
+		this.userNo = userNo;
+	}
 
 	public BoardVo(int no, String name, String title, String content, int hit, String regDate, int userNo) {
 		super();

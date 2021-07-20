@@ -24,6 +24,17 @@ public class BoardVo {
 	}
 	
 
+	public BoardVo(int no, String name, String title, int hit, String regDate) {
+		super();
+		//리스트 검색용
+		this.no = no;
+		this.name = name;
+		this.title = title;
+		this.hit = hit;
+		this.regDate = regDate;
+	}
+
+
 	public BoardVo(int no, String title, String content) {	//수정에 필요
 		super();
 		this.no = no;

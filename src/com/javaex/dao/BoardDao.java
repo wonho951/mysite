@@ -54,80 +54,12 @@ public class BoardDao {
 			System.out.println("error:" + e);
 		}
 	}
-
-	
-	
-	//게시판 리스트(검색안할때)
-	public List<BoardVo> getBoardList() {
-		return getBoardList("");
-	}
-
-	// 사람 리스트(검색할때)
-	public List<BoardVo> getBoardList(String keword) {
-		List<BoardVo> boardList = new ArrayList<BoardVo>();
-
-		this.getConnection();
-
-		try {
-
-			// 3. SQL문 준비 / 바인딩 / 실행 --> 완성된 sql문을 가져와서 작성할것
-			String query = "";
-			query += " select  board.no, ";
-			query += "         users.name, ";
-			query += "         board.title, ";
-			query += "         board.content, ";
-			query += "         board.hit, ";
-			query += "		   reg_date, ";
-			query += "		   board.user_no ";
-			query += " from users, board ";
-			query += " where users.no = board.user_no ";
-			query += " order by reg_date desc ";
-
-			if (keword != "" || keword == null) {
-				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-
-			} else {
-				query += " and board.title like ? ";
-				query += " or users.name like  ? ";
-
-				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-				
-				pstmt.setString(1, '%' + keword + '%'); // ?(물음표) 중 1번째, 순서중요
-				pstmt.setString(2, '%' + keword + '%'); // ?(물음표) 중 2번째, 순서중요
-
-			}
-
-			rs = pstmt.executeQuery();
-
-			// 4.결과처리
-			while (rs.next()) {
-				int no = rs.getInt("no");
-				String name = rs.getString("name");
-				String title = rs.getString("title");
-				String content = rs.getString("content");
-				int hit = rs.getInt("hit");
-				String regDate = rs.getString("reg_date");
-				int userNo = rs.getInt("user_no");
-
-				BoardVo boardVo = new BoardVo(no, name, title, content, hit, regDate, userNo);
-				boardList.add(boardVo);
-			}
-
-		} catch (SQLException e) {
-			System.out.println("error:" + e);
-		}
-
-		close();
-
-		return boardList;
-
-	}
 	
 	
 	
 	
 	// 게시판 리스트
-	/*public List<BoardVo> getBoardList() {
+	public List<BoardVo> getBoardList() {
 
 		// 리스트 생성
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
@@ -173,7 +105,7 @@ public class BoardDao {
 
 		return boardList;
 
-	}*/
+	}
 
 	// 게시판 글 조회하기
 	public BoardVo getBoard(int no) {

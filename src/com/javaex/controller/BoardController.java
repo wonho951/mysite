@@ -37,6 +37,7 @@ public class BoardController extends HttpServlet {
 			
 			List<BoardVo> boardList = boardDao.getBoardList();
 			
+			
 			request.setAttribute("boardList", boardList);
 			
 			WebUtil.forword(request, response, "/WEB-INF/views/board/list.jsp");
@@ -128,7 +129,7 @@ public class BoardController extends HttpServlet {
 			
 			WebUtil.redirect(request, response, "/mysite/board?action=list");
 			
-		} else if("search".equals(action)) {
+		} /*else if("search".equals(action)) {
 			System.out.println("검색");
 						
 			String keyword = request.getParameter("keyword");
@@ -138,8 +139,8 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("searchList", searchList);
 			System.out.println(searchList);
 			
-			WebUtil.forword(request, response, "/board?action=list");
-		}
+			WebUtil.forword(request, response, "/WEB-INF/views/board/list.jsp");
+		}*/
 		
 	}
 

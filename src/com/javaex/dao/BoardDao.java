@@ -101,13 +101,16 @@ public class BoardDao {
 
 			// 4.결과처리
 			while (rs.next()) {
-				int personId = rs.getInt("person_id");
+				int no = rs.getInt("no");
 				String name = rs.getString("name");
-				String hp = rs.getString("hp");
-				String company = rs.getString("company");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				int hit = rs.getInt("hit");
+				String regDate = rs.getString("reg_date");
+				int userNo = rs.getInt("user_no");
 
-				BoardVo personVo = new BoardVo(personId, name, hp, company);
-				personList.add(personVo);
+				BoardVo boardVo = new BoardVo(no, name, title, content, hit, regDate, userNo);
+				boardList.add(boardVo);
 			}
 
 		} catch (SQLException e) {
@@ -116,7 +119,7 @@ public class BoardDao {
 
 		close();
 
-		return personList;
+		return boardList;
 
 	}
 	
